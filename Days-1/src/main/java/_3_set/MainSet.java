@@ -1,7 +1,9 @@
 package _3_set;
 
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
+import java.util.TreeSet;
 
 public class MainSet {
     public static void main(String[] args) {
@@ -41,5 +43,33 @@ public class MainSet {
 
         System.out.println(customers);
 
+        Set<Customer> linkedSet = new LinkedHashSet<>();
+        linkedSet.add(c1);
+        linkedSet.add(c1);
+        linkedSet.add(c1);
+        linkedSet.add(c2);
+        linkedSet.add(c2);
+        linkedSet.add(c2);
+        linkedSet.add(c3);
+        linkedSet.add(c3);
+        linkedSet.add(c3);
+        linkedSet.add(c3);
+        linkedSet.add(c4);
+        System.out.println(linkedSet);
+
+
+        // treeSet
+        Set<String> treeSet = new TreeSet<>();
+        treeSet.add("Ahmet");
+        treeSet.add("Ahmet");
+        treeSet.add("Ahmet");
+        treeSet.add("Ali");
+        treeSet.add("Ali");
+        treeSet.add("Erkan");
+        treeSet.add("Serkan");
+        treeSet.add("Serkan");
+        treeSet.add("Zehra");
+        treeSet.add("Zehra");
+        System.out.println(treeSet);
     }
 }
