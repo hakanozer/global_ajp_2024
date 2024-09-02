@@ -70,5 +70,23 @@ public class MainMap {
 
         System.out.println(ls);
 
+        Map<EUser, Object> mapEnum = new HashMap<>();
+        mapEnum.put(EUser.id, 50);
+        mapEnum.put(EUser.name, "Mehmet");
+        mapEnum.put(EUser.surname, "Bily");
+        mapEnum.put(EUser.email, "mehmet@mail.com");
+        mapEnum.put(EUser.status, false);
+
+        System.out.println( mapEnum.get(EUser.name) );
+        System.out.println(mapEnum);
+
+        Map<EUser, Object> linkedMap = new LinkedHashMap<>();
+        linkedMap.put(EUser.id, 100);
+        linkedMap.put(EUser.name, "Zehra");
+        linkedMap.put(EUser.surname, "Bil");
+        linkedMap.put(EUser.email, "zehra@mail.com");
+        linkedMap.put(EUser.status, true);
+        System.out.println(linkedMap);
+
     }
 }
