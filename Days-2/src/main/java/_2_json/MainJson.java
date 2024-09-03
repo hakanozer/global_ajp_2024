@@ -4,7 +4,10 @@ public class MainJson {
     public static void main(String[] args) {
 
         ServiceJson json = new ServiceJson();
-        json.result();
+        Posts posts = json.result();
+        for (Post post : posts.getPosts()) {
+            System.out.println(post.getTitle());
+        }
 
     }
 }
