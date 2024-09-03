@@ -3,8 +3,22 @@ package _3_thread;
 public class UseMainThread {
     public static void main(String[] args) {
 
-        Action ac1 = new Action();
-        ac1.start();
+        Runnable rn = () -> {
+             try {
+                 Action ac1 = new Action("1.jpg");
+                 ac1.start();
+                 ac1.join();
+
+                 Action ac2 = new Action("2.jpg");
+                 ac2.start();
+                 ac2.join();
+
+                 Action ac3 = new Action("3.jpg");
+                 ac3.start();
+                 ac3.join();
+             }catch (Exception e) {}
+        };
+        new Thread(rn).start();
 
         System.out.println("this line call");
 
