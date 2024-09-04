@@ -3,6 +3,9 @@ package com.works.services;
 import com.works.entities.Product;
 import com.works.repositories.ProductRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -46,5 +49,23 @@ public class ProductService {
         }
         return null;
     }
+
+    public List<Product> saveAll( List<Product> productList ) {
+        return productRepository.saveAll(productList);
+    }
+
+
+    // select * from product limit 0, 10
+    public Page<Product> findAllPage(int pageNumber, int pageSize) {
+        int sizeEnd = 10;
+        if (pageSize < 51 && pageSize > 5) {
+            sizeEnd = pageSize;
+        }
+        Pageable pageable = PageRequest.of(pageNumber, sizeEnd);
+        Page<Product> products = productRepository.findAll(pageable);
+        return products;
+    }
+
+
 
 }
