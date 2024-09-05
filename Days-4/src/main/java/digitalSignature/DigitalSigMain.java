@@ -14,21 +14,17 @@ import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.json.JSONObject;
 
 public class DigitalSigMain {
 
-    private static final String spec = "secp256k1";
-    private static final String algo = "SHA256withECDSA";
+    private static final String algo = "SHA256withRSA";
 
     // sender
     public JSONObject sender() throws Exception {
         JSONObject obj = new JSONObject();
-
-        ECGenParameterSpec ecGenParameterSpec = new ECGenParameterSpec(spec);
-        KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("EC");
-        keyPairGenerator.initialize(ecGenParameterSpec, new SecureRandom());
+        KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
+        keyPairGenerator.initialize(2048);
         KeyPair keyPair = keyPairGenerator.generateKeyPair();
 
         PublicKey publicKey = keyPair.getPublic();
@@ -62,7 +58,7 @@ public class DigitalSigMain {
     public boolean receiver ( JSONObject obj ) throws Exception {
 
         Signature signature = Signature.getInstance(obj.getString("algo"));
-        KeyFactory keyFactory = KeyFactory.getInstance("EC");
+        KeyFactory keyFactory = KeyFactory.getInstance("RSA");
 
         EncodedKeySpec publicKeySpec = new X509EncodedKeySpec(Base64.getDecoder().decode(obj.getString("publicKey")));
         PublicKey publicKey = keyFactory.generatePublic(publicKeySpec);
