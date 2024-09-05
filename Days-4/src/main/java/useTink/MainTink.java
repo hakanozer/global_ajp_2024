@@ -7,5 +7,8 @@ public class MainTink {
         String cipherText = tinkEncDec.encrypt("12345");
         System.out.println(cipherText);
 
+        String plainText = tinkEncDec.decrypt(cipherText);
+        System.out.println(plainText);
+
     }
 }
